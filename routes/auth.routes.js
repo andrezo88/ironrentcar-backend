@@ -2,11 +2,11 @@ const { Router } = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User')
+const Car = require('../models/Car')
 const router = Router();
 
 router.post("/signup", async (req, res) => {
     try {
-        const { name, email, passwordHash } = req.body;
 
         if (!name || !email || !passwordHash) {
             throw new Error("All fields must be provided")
@@ -72,6 +72,17 @@ try {
 } catch (error) {
     res.status(500).json({msg: error.message})
 }
-})
+});
+
+router.get("/createcar", async (req, res) => {
+    try {
+        const allCars = await Car.find();
+        res.status(200).json(allCars);
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
+    }
+});
 
 module.exports = router;

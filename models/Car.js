@@ -6,18 +6,18 @@ const carSchema = new Schema({
         required: true,
         unique: true
     },
-    name: {
+    model: {
         type: String,
         required: true,
         unique: true
     },
     factory: {
-        type: string,
+        type: String,
         required: true,
         unique: true
     },
     year: {
-        type: date,
+        type: Date,
         required: true
     },
     description: {
