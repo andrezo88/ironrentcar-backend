@@ -16,6 +16,13 @@ app.use(cors());
 //public routes
 
 app.use("/auth", require("./routes/auth.routes"));
+app.use("/car", require("./routes/car.routes"));
+
+//middleware routes
+
+//private routes
+app.use("/rent", require("./routes/rent.routes"));
+
 
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));

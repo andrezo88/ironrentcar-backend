@@ -7,6 +7,7 @@ const router = Router();
 
 router.post("/signup", async (req, res) => {
     try {
+        const { name, email, passwordHash } = req.body;
 
         if (!name || !email || !passwordHash) {
             throw new Error("All fields must be provided")

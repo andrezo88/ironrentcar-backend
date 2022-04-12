@@ -1,12 +1,12 @@
 const { Router } = require('express');
 
 const Car = require('../models/Car')
-//const User = require('../models/User')
 
 const router = Router();
 
 router.get("/", async (req, res) => {
     try {
+        const {category, name, factory, year, description, value, optional} = req.body
         const allCars = await Car.find();
         res.status(200).json(allCars);
     } catch (error) {
