@@ -4,7 +4,6 @@ const carSchema = new Schema({
     category: {
         type: String,
         required: true,
-        unique: true
     },
     model: {
         type: String,
@@ -14,7 +13,6 @@ const carSchema = new Schema({
     factory: {
         type: String,
         required: true,
-        unique: true
     },
     year: {
         type: Date,
