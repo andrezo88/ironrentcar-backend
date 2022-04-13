@@ -16,12 +16,13 @@ app.use(cors());
 //public routes
 
 app.use("/auth", require("./routes/auth.routes"));
-app.use("/car", require("./routes/car.routes"));
+app.use("/group-vehicles", require("./routes/car.routes"));
 
 //middleware routes
+app.use(require("./middleware/auth.middleware"))
 
 //private routes
-app.use("/rent", require("./routes/rent.routes"));
+//app.use("/rent", require("./routes/rent.routes"));
 
 
 

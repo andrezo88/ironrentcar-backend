@@ -4,17 +4,14 @@ const carSchema = new Schema({
     category: {
         type: String,
         required: true,
-        unique: true
     },
     model: {
         type: String,
         required: true,
-        unique: true
     },
     factory: {
         type: String,
         required: true,
-        unique: true
     },
     year: {
         type: Date,
@@ -35,6 +32,11 @@ const carSchema = new Schema({
         type: String,
         required: true
     },
+    plate: {
+        type: String,
+        required: true,
+        unique: true
+    }
 }, {
     timestamps: true,
 })
