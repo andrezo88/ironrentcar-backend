@@ -8,8 +8,7 @@ const carSchema = new Schema({
     model: {
         type: String,
         required: true,
-        unique: true
-    },
+        },
     factory: {
         type: String,
         required: true,
@@ -33,6 +32,11 @@ const carSchema = new Schema({
         type: String,
         required: true
     },
+    plate: {
+        type: String,
+        required: true,
+        unique: true
+    }
 }, {
     timestamps: true,
 })
