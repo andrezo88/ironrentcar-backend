@@ -19,6 +19,7 @@ app.use("/auth", require("./routes/auth.routes"));
 app.use("/group-vehicles", require("./routes/car.routes"));
 
 //middleware routes
+app.use(require("./middleware/auth.middleware"))
 
 //private routes
 //app.use("/rent", require("./routes/rent.routes"));
