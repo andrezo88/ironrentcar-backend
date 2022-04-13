@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { restart } = require('nodemon');
+const uploadCloud = require('../config/cloudinary.config')
 
 const Car = require('../models/Car')
 
@@ -52,6 +52,18 @@ router.delete("/:carId", async (req, res) => {
     try {
         const deleteCar = await Car.findByIdAndDelete({ _id: carId }, { new: true });
         res.status(200).json(deleteCar)
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+})
+
+router.put("/:cardId/image", uploadCloud.single("image"), async (req, res) => {
+    const { cardId } = req.params;
+    const { path } = req.file;
+
+    try {
+        const updateCarImage = await Car.findByIdAndUpdate(cardId, { image: path }, { new: true }).select("-passwordHash")
+        res.status(200).json(updateCarImage)
     } catch (error) {
         res.status(500).json({ error: error.message })
     }

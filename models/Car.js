@@ -8,7 +8,7 @@ const carSchema = new Schema({
     model: {
         type: String,
         required: true,
-        },
+    },
     factory: {
         type: String,
         required: true,
