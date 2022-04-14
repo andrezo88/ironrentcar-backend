@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const rentSchema = new Schema({
     periodRent: {
-        type: Date,
+        type: Number,
         required: true
     },
     payment: {
