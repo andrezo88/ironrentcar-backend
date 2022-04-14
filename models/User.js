@@ -18,7 +18,7 @@ const userSchema = new Schema({
     image: {
         type: String
     },
-    role: {
+    adm: {
         type: Boolean,
         default: false
     },

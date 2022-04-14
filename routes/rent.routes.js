@@ -40,7 +40,7 @@ router.put("/:id", async (req, res) => {
     const userId = req.user.id;
 
     try {
-        const updateRent = await Rent.findByIdAndUpdate({ _id: id, user: userId }, req.body, { new: true, })
+        const updatedRent = await Rent.findByIdAndUpdate({ _id: id, user: userId }, req.body, { new: true, })
         if (!updatedRent) {
             throw new Error("cannot update car from user")
         }
