@@ -61,7 +61,7 @@ router.post("/login", async (req, res) => {
             error.status = 401;
             throw error
         }
-        //teste
+
         const payloadUser = {
             id: userFromDb._id,
             name: userFromDb.name,
