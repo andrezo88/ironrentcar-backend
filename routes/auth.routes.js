@@ -50,19 +50,21 @@ router.post("/login", async (req, res) => {
 
         if (!userFromDb) {
             const error = new Error("Email or password is incorrect");
-            error.status = 401;
+            error.status = 400;
             throw error;
         }
 
         const compareHash = bcrypt.compareSync(passwordHash, userFromDb.passwordHash);
 
-        if (!compareHash)
-            throw new Error;
+        if (!compareHash) {
+            const error = new Error("Email or password is incorrect");
+            error.status = 401;
+            throw error
+        }
 
         const payloadUser = {
             id: userFromDb.id,
             name: userFromDb.name,
-            adm: userFromDb.adm,
             email
         }
 
@@ -71,10 +73,10 @@ router.post("/login", async (req, res) => {
             expiresIn: "1day",
         });
 
-        res.status(200).json({ user: payloadUser, token }).select('-name');
+        res.status(200).json({ user: payloadUser, token });
 
     } catch (error) {
-        res.status(500).json({ msg: error.message })
+        res.status(error.status || 500).json({ msg: error.message })
     }
 });
 
