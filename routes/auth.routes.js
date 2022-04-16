@@ -45,7 +45,7 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
     try {
-        const { email, passwordHash } = req.body;
+        const { email, password } = req.body;
         const userFromDb = await User.findOne({ email });
 
         if (!userFromDb) {
@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
             throw error;
         }
 
-        const compareHash = bcrypt.compareSync(passwordHash, userFromDb.passwordHash);
+        const compareHash = bcrypt.compareSync(password, userFromDb.passwordHash);
 
         if (!compareHash) {
             const error = new Error("Email or password is incorrect");
