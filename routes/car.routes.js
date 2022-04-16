@@ -16,7 +16,6 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
     try {
-        //const userId = req.user.id;
         const {
             category,
             name,
