@@ -7,9 +7,9 @@ const router = Router();
 
 router.post("/signup", async (req, res) => {
     try {
-        const { name, email, adm, passwordHash } = req.body;
+        const { name, email, adm, password } = req.body;
 
-        if (!name || !email || !passwordHash) {
+        if (!name || !email || !password) {
             throw new Error("All fields must be provided")
         }
 
@@ -21,7 +21,7 @@ router.post("/signup", async (req, res) => {
 
         const salt = bcrypt.genSaltSync(12);
 
-        const hash = bcrypt.hashSync(passwordHash, salt);
+        const hash = bcrypt.hashSync(password, salt);
 
         const newUser = await User.create({
             name,
