@@ -9,8 +9,7 @@ const router = Router();
 router.get("/", async (req, res) => {
     try {
         const userId = req.user.id;
-
-        const allRents = await Rent.find({ user: userId })
+        const allRents = await Rent.find({ user: userId }).populate("car")
         res.status(200).json(allRents)
     } catch (error) {
         res.status(500).json({ error: error.message })
