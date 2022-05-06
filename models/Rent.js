@@ -8,7 +8,7 @@ const rentSchema = new Schema({
     payment: {
         type: String,
         required: true,
-        defalt: "Credit card"
+        default: "Credit card"
     },
     value: {
         type: Number,
